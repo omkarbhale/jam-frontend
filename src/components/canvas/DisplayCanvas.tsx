@@ -84,6 +84,11 @@ class DisplayCanvas extends React.Component<DisplayCanvasProps, DisplayCanvasSta
             this.setState({ ...this.state, currentStrokes: newCurrentStrokes });
         })
 
+        socket.on("img-change", async (base64) => {
+            this.state.img.image(await base64ToImage(base64, this.p5));
+            this.setState({});
+        })
+
         document.addEventListener('keypress', this.handleKeyPress.bind(this));
     }
 
@@ -208,6 +213,7 @@ class DisplayCanvas extends React.Component<DisplayCanvasProps, DisplayCanvasSta
             while (numSelfStrokes > 5) {
                 const firstSelfStrokeIndex = this.state.strokes.findIndex((stroke) => stroke.id === this.self.id);
                 drawStroke(this.state.img, this.state.strokes[firstSelfStrokeIndex]);
+                socket.emit("img-change", imageToBase64(this.state.img))    ;
                 newStrokes.splice(firstSelfStrokeIndex, 1);
                 // removeCanvasStroke(this.id, firstSelfStrokeIndex);
                 strokesToRemove.push(firstSelfStrokeIndex);

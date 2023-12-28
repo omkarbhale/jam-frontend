@@ -7,20 +7,6 @@ export const getCanvas = async (id) => {
     return result.data;
 }
 
-// export const addCanvasStroke = async (id, stroke) => {
-//     const result = await axios.post(`/canvas/stroke/`, { canvas: id, stroke }, { params: { id: self().id } });
-//     if (result.status !== 200) return null;
-//     console.log('Canvas stroke added successfully');
-//     return result.data;
-// }
-
-// export const removeCanvasStroke = async (id, strokeIndex) => {
-//     console.log('Attempting to remove stroke ' + strokeIndex + ' from canvas');
-//     const result = await axios.post(`/canvas/stroke/delete`, { canvas: id, strokeIndex }, { params: {id: self().id} });
-//     if (result.status !== 200) return null;
-//     return result.data;
-// }
-
 export const addAndRemoveCanvasStroke = async (id, newStroke, oldStrokesIndex) => {
     const result = await axios.post(`/canvas/stroke/add-remove`, { canvas: id, newStroke, oldStrokesIndex }, { params: { id: self().id } });
     if (result.status!== 200) return null;
