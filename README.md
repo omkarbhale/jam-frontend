@@ -1,4 +1,5 @@
 # Jam
+(Link to backend repo: [https://github.com/omkarbhale/jam-backend](https://github.com/omkarbhale/jam-backend))
 
 ## Stack used
 - React
