@@ -10,6 +10,7 @@
 ## Featues implemented
 - Whiteboarding session
 - Supports different colors and brush sizes
+- Whiteboards are persisted over browser refreshes
 - Supports undo/redo
 - Collaborators can see others' cursors and drawings in real time
 - Ability to save canvas as image
